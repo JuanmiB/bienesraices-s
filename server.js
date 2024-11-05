@@ -26,7 +26,7 @@ app.use(cookieParser())
 // app.use(csurf({ cookie: true }))
 
 app.use(cors({
-  origin: 'http://localhost:5174', // Reemplaza esto con la URL de tu frontend
+  origin: 'https://bienesraices-react.netlify.app/', // Reemplaza esto con la URL de tu frontend
   credentials: true // Permitir cookies y credenciales en la solicitud
 }))
 

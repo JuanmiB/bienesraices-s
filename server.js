@@ -26,8 +26,8 @@ app.use(cookieParser())
 // app.use(csurf({ cookie: true }))
 
 app.use(cors({
-  origin: 'https://bienesraices-react.netlify.app',
-  credentials: true // Permitir cookies y credenciales en la solicitud
+  origin: '*',
+  credentials: true
 }))
 
 // app.use(identifyUser)

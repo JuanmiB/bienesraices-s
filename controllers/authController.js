@@ -3,10 +3,6 @@ import bcrypt from 'bcrypt'
 import { generateToken } from '../helpers/token.js'
 import jwt from 'jsonwebtoken'
 
-export const login = async (req, res) => {
-  res.status(200)
-}
-
 export const authentication = async (req, res) => {
   // Extraigo en email y el password del body
   const { email, password } = req.body
@@ -45,7 +41,7 @@ export const cerrarSesion = async (req, res) => {
     res.clearCookie('_token', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production', // Asegura que sea HTTPS en producción
-      sameSite: 'Strict' // Evita el envío en peticiones cross-site
+      sameSite: 'None' // Evita el envío en peticiones cross-site
     })
 
     // Responde con éxito o redirige al usuario a la página de login o a la página principal

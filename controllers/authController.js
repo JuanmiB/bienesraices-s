@@ -3,6 +3,10 @@ import bcrypt from 'bcrypt'
 import { generateToken } from '../helpers/token.js'
 import jwt from 'jsonwebtoken'
 
+export const login = async (req, res) => {
+  res.status(200)
+}
+
 export const authentication = async (req, res) => {
   // Extraigo en email y el password del body
   const { email, password } = req.body

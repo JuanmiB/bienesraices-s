@@ -1,17 +1,31 @@
 import jwt from 'jsonwebtoken'
+import crypto from 'crypto'
 
-// Funcion para generar un token unico
-export const generarId = () => Date.now().toString(32) + Math.random().toString(32).substring(2)
+const secret = process.env.JWT_SECRET // La clave secreta debe ser larga y segura (mínimo 256 bits).
 
-// Generar JWT con palabra secreta
-const secret = process.env.JWT_SECRET
+// Generar un ID único y seguro
+export const generarId = () => crypto.randomBytes(16).toString('hex')
 
+// Generar un JWT seguro
 export function generateToken (user) {
-  // Creo la carga util con los datos del usuario
-  const payload = {
-    sub: user.id,
-    name: user.nombre
+  // Verificar que el secreto esté configurado
+  if (!secret) {
+    throw new Error('Falta la clave secreta JWT_SECRET en las variables de entorno.')
   }
-  const token = jwt.sign(payload, secret)
+
+  // Crear el payload con los datos necesarios
+  const payload = {
+    sub: user.id, // Identificador del usuario
+    name: user.nombre // Nombre del usuario
+  }
+
+  // Configurar opciones del token
+  const options = {
+    algorithm: 'HS256', // Algoritmo seguro
+    expiresIn: '1h' // Expiración (1 hora)
+  }
+
+  // Generar el token
+  const token = jwt.sign(payload, secret, options)
   return token
 }

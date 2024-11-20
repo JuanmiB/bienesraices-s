@@ -17,9 +17,14 @@ app.disable('x-powered-by')
 app.use(urlencoded({ extended: true }))
 
 app.use(cors({
-  origin: 'https://bienesraices-react.netlify.app',
+  origin: 'http://localhost:5173',
   credentials: true // Permitir cookies y credenciales en la solicitud
 }))
+
+// app.use(cors({
+//   origin: 'https://bienesraices-react.netlify.app',
+//   credentials: true // Permitir cookies y credenciales en la solicitud
+// }))
 
 // Middleware -> Uso de la configuracion de passport
 app.use(passport.initialize())

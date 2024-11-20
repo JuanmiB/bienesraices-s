@@ -18,35 +18,49 @@ export const Propiedad = db.define('propiedades', {
   },
   metros: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      min: 1
+    }
   },
   ambientes: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      min: 1
+    }
   },
-
   dormitorios: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      min: 0
+    }
   },
-  baños: {
+  banos: { // Cambiado de baños a banos
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      min: 0
+    }
   },
   cochera: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      min: 0
+    }
   },
   calle: {
     type: DataTypes.STRING(100),
     allowNull: false
   },
   lat: {
-    type: DataTypes.STRING,
+    type: DataTypes.DECIMAL(10, 7), // Cambiado a DECIMAL
     allowNull: false
   },
   lng: {
-    type: DataTypes.STRING,
+    type: DataTypes.DECIMAL(10, 7), // Cambiado a DECIMAL
     allowNull: false
   },
   publicado: {
@@ -54,5 +68,6 @@ export const Propiedad = db.define('propiedades', {
     allowNull: false,
     defaultValue: false
   }
-
+}, {
+  timestamps: true // Añadido timestamps
 })

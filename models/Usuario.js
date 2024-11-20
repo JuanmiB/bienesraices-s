@@ -14,7 +14,14 @@ export const Usuario = db.define('usuarios', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  token: DataTypes.STRING,
+  recoveryToken: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  recoveryTokenExpiration: {
+    type: DataTypes.DATE,
+    allowNull: true
+  },
   confirm: DataTypes.BOOLEAN
 },
 {
@@ -34,6 +41,6 @@ export const Usuario = db.define('usuarios', {
     }
   }
 })
-Usuario.prototype.verifyPassword = function (password) {
-  return bcrypt.compareSync(password, this.password)
+Usuario.prototype.verifyPassword = async function (password) {
+  return await bcrypt.compare(password, this.password)
 }

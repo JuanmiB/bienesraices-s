@@ -29,7 +29,8 @@ export const authentication = async (req, res) => {
     res.cookie('_token', token, {
       httpOnly: true,
       sameSite: 'None',
-      secure: true
+      secure: true,
+      domain: 'bienesraices-s.onrender.com'
     })
 
     // Respuesta exitosa

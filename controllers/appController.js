@@ -121,6 +121,7 @@ export const getPropiedad = async (req, res) => {
 
 export const getCategorias = async (req, res) => {
   console.log(req.cookies)
+  console.log('Encabezados recibidos:', req.headers)
   try {
     const categorias = await Categoria.findAll()
     res.json({ categorias })

@@ -29,6 +29,12 @@ app.use(cors({
 // Middleware -> Uso de la configuracion de passport
 app.use(passport.initialize())
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://bienesraices-react.netlify.app')
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
+  next() // Pasa al siguiente middleware o ruta
+})
+
 // Habilitacion de lectua de cookies
 app.use(cookieParser())
 

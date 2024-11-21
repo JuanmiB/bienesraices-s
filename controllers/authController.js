@@ -29,7 +29,7 @@ export const authentication = async (req, res) => {
     res.cookie('_token', token, {
       httpOnly: true,
       sameSite: 'None',
-      secure: process.env.NODE_ENV
+      secure: true
     })
 
     // Respuesta exitosa

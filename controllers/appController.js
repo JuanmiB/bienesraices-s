@@ -120,6 +120,7 @@ export const getPropiedad = async (req, res) => {
 // La busqueda se hace en base la categoria clickeada
 
 export const getCategorias = async (req, res) => {
+  console.log(req.cookies)
   try {
     const categorias = await Categoria.findAll()
     res.json({ categorias })

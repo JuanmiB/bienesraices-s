@@ -1,7 +1,13 @@
 import { Sequelize } from 'sequelize'
+import dotenv from 'dotenv'
+
+// Cargar las variables de entorno desde .env si no estás en producción
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config()
+}
 
 // lecuta del archivo env y conexion con base de datos
-process.loadEnvFile()
+// process.loadEnvFile()
 
 const db = new Sequelize(process.env.DB_NOMBRE, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,

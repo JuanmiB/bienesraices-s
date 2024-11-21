@@ -26,7 +26,11 @@ export const authentication = async (req, res) => {
 
     // Generar token y configurar cookie
     const token = generateToken(user)
-    res.cookie('_token', token, { httpOnly: true })
+    res.cookie('_token', token, {
+      httpOnly: true,
+      sameSite: 'None',
+      secure: process.env.NODE_ENV
+    })
 
     // Respuesta exitosa
     res.status(200).json({

@@ -16,15 +16,15 @@ app.disable('x-powered-by')
 // middleware -> lectura de formularo con true para un formato de objetos
 app.use(urlencoded({ extended: true }))
 
-app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true // Permitir cookies y credenciales en la solicitud
-}))
-
 // app.use(cors({
-//   origin: 'https://bienesraices-react.netlify.app',
+//   origin: 'http://localhost:5173',
 //   credentials: true // Permitir cookies y credenciales en la solicitud
 // }))
+
+app.use(cors({
+  origin: 'https://bienesraices-react.netlify.app',
+  credentials: true // Permitir cookies y credenciales en la solicitud
+}))
 
 // Middleware -> Uso de la configuracion de passport
 app.use(passport.initialize())

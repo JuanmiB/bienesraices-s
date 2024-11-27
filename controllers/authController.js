@@ -26,11 +26,17 @@ export const authentication = async (req, res) => {
 
     // Generar token y configurar cookie
     const token = generateToken(user)
+    // res.cookie('_token', token, {
+    //   httpOnly: true,
+    //   sameSite: 'Lax',
+    //   secure: false
+    //   // domain: 'bienesraices-s.onrender.com'
+    // })
     res.cookie('_token', token, {
       httpOnly: true,
-      sameSite: 'Lax',
-      secure: false
-      // domain: 'bienesraices-s.onrender.com'
+      sameSite: 'None',
+      secure: false,
+      domain: 'bienesraices-s.onrender.com'
     })
 
     // Respuesta exitosa

@@ -28,9 +28,9 @@ export const authentication = async (req, res) => {
     const token = generateToken(user)
     res.cookie('_token', token, {
       httpOnly: true,
-      sameSite: 'None',
-      secure: true,
-      domain: 'bienesraices-s.onrender.com'
+      sameSite: 'Lax',
+      secure: false
+      // domain: 'bienesraices-s.onrender.com'
     })
 
     // Respuesta exitosa
@@ -70,7 +70,8 @@ export const cerrarSesion = async (req, res) => {
     res.clearCookie('_token', {
       httpOnly: true,
       secure: true, // process.env.NODE_ENV === 'production', // Asegura que sea HTTPS en producción
-      sameSite: 'None' // Evita el envío en peticiones cross-site
+      sameSite: 'None', // Evita el envío en peticiones cross-site
+      domain: 'bienesraices-s.onrender.com'
     })
 
     // Responde con éxito o redirige al usuario a la página de login o a la página principal
